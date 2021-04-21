@@ -15,7 +15,12 @@ export const isAuthenticated = () => {
 }
 
 export const parseJwt = _ => {
+    
     const token = readToken();
+    console.log(token);
+    if(token === null){
+        return undefined;
+    }
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
     const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {

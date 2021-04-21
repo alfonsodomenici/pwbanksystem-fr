@@ -1,0 +1,8 @@
+.notification.is-message{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 250px;
+    height: 150px;
+    z-index: 1000;
+}
