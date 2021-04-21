@@ -5,12 +5,13 @@ import {storeToken} from './TokenManager.js';
 
 export default class LoginView extends View{
 
-    postConstruct(){
+    connectedCallback(){
+        this.render();
         this.usr = document.querySelector('#usr');
         this.pwd = document.querySelector('#pwd');
     }
 
-    createView(){
+    view(){
         return  html`
             <form @submit=${e => this.onLogin(e)}>
                 <input type='text' name='usr' id='usr'>
@@ -40,6 +41,12 @@ export default class LoginView extends View{
             console.log('autenticazione ok.. \n', token );
             storeToken(token);
             Router.go("/user");
+            this.dispatchEvent(new CustomEvent('login', {
+                bubbles: true,
+                composed: true,
+                detail: {
+                }
+            }));
         })
         .catch(error => {
             console.error(error);

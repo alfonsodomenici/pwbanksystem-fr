@@ -3,8 +3,11 @@ import { html} from './lib/lit-html.js';
 
 export default class HomeView extends View{
 
+    connectedCallback(){
+        this.render();
+    }
 
-    createView(){
+    view(){
         //creare l'interfaccia grafica del componente
         return html`
             <h1>Home view</h1>
